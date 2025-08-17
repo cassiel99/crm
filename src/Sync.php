@@ -1,5 +1,4 @@
 <?php
-// src/Sync.php — совместимо со старыми PHP
 class Sync {
   public static function emit($db, $entity, $action, $entityId, $payload = null){
     try {
@@ -11,7 +10,6 @@ class Sync {
         $payload ? json_encode($payload, JSON_UNESCAPED_UNICODE) : null
       ));
     } catch (Throwable $e) {
-      // глушим, синхронизация не должна ломать основной CRUD
     }
   }
 }
