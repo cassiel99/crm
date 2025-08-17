@@ -1,8 +1,7 @@
 <?php
-// public_html/api/deals.php
+
 declare(strict_types=1);
 
-/* ===== DEBUG: включено для диагностики. Уберите в проде. ===== */
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 register_shutdown_function(function () {
@@ -12,7 +11,6 @@ register_shutdown_function(function () {
     echo json_encode(['error' => "FATAL: {$e['message']} @ {$e['file']}:{$e['line']}"], JSON_UNESCAPED_UNICODE);
   }
 });
-/* ============================================================ */
 
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
@@ -20,7 +18,6 @@ header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 
-// Самоопределение APP_ROOT — либо public_html, либо уровень выше
 $docroot = dirname(__DIR__);
 $above   = dirname($docroot);
 $APP_ROOT = (file_exists($docroot.'/config/config.php') && is_dir($docroot.'/src'))
