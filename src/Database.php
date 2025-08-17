@@ -1,10 +1,7 @@
 <?php
-// src/Database.php
 class Database {
-  /** @var PDO */
   private $pdo;
 
-  /** @param array $cfg */
   public function __construct($cfg){
     $this->pdo = new PDO(
       $cfg['dsn'],
@@ -17,7 +14,6 @@ class Database {
     );
   }
 
-  /** @return PDO */
   public function pdo() {
     return $this->pdo;
   }
