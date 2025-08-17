@@ -1,17 +1,14 @@
 <?php
-// public_html/db_check.php  (временный файл для диагностики; удалите после проверки)
 
-// Покажем ошибку, если что-то пойдёт не так
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 
-// Определим, где лежат src/ и config/: в самом public_html или уровнем выше
-$docroot = __DIR__;                 // .../public_html
-$above   = dirname($docroot);       // .../(над public_html)
+$docroot = __DIR__;             
+$above   = dirname($docroot);    
 
 $candidates = [
-  $docroot,                         // вариант: src/ и config/ внутри public_html
-  $above,                           // вариант: src/ и config/ рядом с public_html (уровнем выше)
+  $docroot,             
+  $above,                         
 ];
 
 $APP_ROOT = null;
