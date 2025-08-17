@@ -1,4 +1,4 @@
-<?php /* public/index.php */ ?>
+<?php  ?>
 <!doctype html>
 <html lang="ru">
 <head>
