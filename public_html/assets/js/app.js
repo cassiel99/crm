@@ -1,10 +1,5 @@
-// public_html/assets/js/app.js
-
-// -----------------------------------------------------------------------------
-// Глобальное состояние
-// -----------------------------------------------------------------------------
 const state = {
-  entity: 'deals',   // 'deals' | 'contacts'
+  entity: 'deals',  
   list: [],
   selectedId: null
 };
@@ -36,7 +31,7 @@ function init(){
   els.deleteBtn.addEventListener('click', delSelected);
 
   loadList();
-  startLiveUpdates(); // онлайн-синхронизация между устройствами (SSE)
+  startLiveUpdates();
 }
 
 // -----------------------------------------------------------------------------
@@ -267,7 +262,6 @@ let es = null;
 let syncTimer = null;
 
 function startLiveUpdates(){
-  // восстановим last_id из localStorage
   let lastId = Number(localStorage.getItem('sync_last_id') || 0);
 
   try { if (es) es.close(); } catch(_) {}
@@ -276,7 +270,7 @@ function startLiveUpdates(){
   const handle = async (e) => {
     if (e && e.lastEventId) localStorage.setItem('sync_last_id', e.lastEventId);
 
-    const evtName = e.type;              // напр., 'deals.update'
+    const evtName = e.type;              
     const [evtEntity] = evtName.split('.');
 
     if (syncTimer) clearTimeout(syncTimer);
@@ -296,6 +290,5 @@ function startLiveUpdates(){
   ].forEach(evt => es.addEventListener(evt, handle));
 
   es.addEventListener('error', () => {
-    // браузер переподключится сам
   });
 }
